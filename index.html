@@ -1,482 +1,1134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VP Pre Owned Cars</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VP Pre Owned Cars</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins', sans-serif;
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#ffffff;
+    color:#111;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:90%;
+    max-width:1400px;
+    margin:auto;
+}
+
+/* NAVBAR */
+
+header{
+    width:100%;
+    background:#fff;
+    border-bottom:1px solid #e5e5e5;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 0;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:800;
+    letter-spacing:-1px;
+}
+
+.logo span{
+    color:#777;
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+}
+
+.nav-links a{
+    font-size:15px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#777;
+}
+
+.menu-btn{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    background:#fff;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.hero-content h4{
+    color:#777;
+    margin-bottom:15px;
+    font-weight:600;
+    letter-spacing:1px;
+}
+
+.hero-content h1{
+    font-size:70px;
+    line-height:1.05;
+    margin-bottom:25px;
+    letter-spacing:-3px;
+}
+
+.hero-content p{
+    color:#666;
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.hero-btns{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 28px;
+    border-radius:12px;
+    border:none;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn-dark{
+    background:#1f1f1f;
+    color:#fff;
+}
+
+.btn-dark:hover{
+    background:#555;
+}
+
+.btn-light{
+    background:#efefef;
+    color:#111;
+}
+
+.btn-light:hover{
+    background:#ddd;
+}
+
+.hero-image img{
+    width:100%;
+    border-radius:24px;
+    object-fit:cover;
+}
+
+/* SECTION */
+
+section{
+    padding:100px 0;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-size:48px;
+    margin-bottom:15px;
+    letter-spacing:-2px;
+}
+
+.section-title p{
+    color:#666;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+/* INVENTORY */
+
+.inventory-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.car-card{
+    border:1px solid #e7e7e7;
+    border-radius:22px;
+    overflow:hidden;
+    transition:0.4s;
+    cursor:pointer;
+    background:#fff;
+}
+
+.car-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 40px rgba(0,0,0,0.06);
+}
+
+.car-card img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+}
+
+.car-content{
+    padding:25px;
+}
+
+.car-content h3{
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+.car-content p{
+    color:#777;
+    margin-bottom:18px;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.car-meta{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:18px;
+}
+
+.car-meta span{
+    background:#f3f3f3;
+    padding:8px 12px;
+    border-radius:10px;
+    font-size:13px;
+    color:#444;
+}
+
+.price{
+    font-size:28px;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.card-btn{
+    width:100%;
+    background:#222;
+    color:#fff;
+    border:none;
+    padding:15px;
+    border-radius:12px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* INFO */
+
+.info-section{
+    background:#fafafa;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.info-box{
+    background:#fff;
+    padding:40px;
+    border-radius:24px;
+    border:1px solid #e8e8e8;
+}
+
+.info-box h3{
+    font-size:26px;
+    margin-bottom:20px;
+}
+
+.info-box p{
+    color:#666;
+    line-height:1.9;
+}
+
+/* ABOUT */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about-image img{
+    width:100%;
+    border-radius:24px;
+}
+
+.about-content h2{
+    font-size:52px;
+    margin-bottom:25px;
+    letter-spacing:-2px;
+}
+
+.about-content p{
+    color:#666;
+    line-height:1.9;
+    margin-bottom:20px;
+}
+
+/* CONTACT */
+
+.contact-box{
+    background:#fafafa;
+    padding:60px;
+    border-radius:28px;
+    text-align:center;
+}
+
+.contact-box h2{
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+.contact-box p{
+    color:#666;
+    margin-bottom:12px;
+    font-size:18px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111;
+    color:#fff;
+    padding:70px 0 30px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+    margin-bottom:50px;
+}
+
+.footer-logo{
+    font-size:32px;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.footer-about{
+    color:#bbb;
+    line-height:1.8;
+}
+
+.footer-links h4{
+    margin-bottom:22px;
+}
+
+.footer-links a{
+    display:block;
+    color:#bbb;
+    margin-bottom:14px;
+    transition:0.3s;
+}
+
+.footer-links a:hover{
+    color:#fff;
+}
+
+.footer-bottom{
+    border-top:1px solid #333;
+    padding-top:25px;
+    text-align:center;
+    color:#888;
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.7);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:9999;
+}
+
+.modal-content{
+    background:#fff;
+    width:100%;
+    max-width:900px;
+    border-radius:24px;
+    overflow:hidden;
+    position:relative;
+    animation:popup 0.3s ease;
+    max-height:90vh;
+    overflow-y:auto;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(0.9);
+        opacity:0;
     }
-
-    body{
-      background:#ffffff;
-      color:#111;
-      overflow-x:hidden;
+    to{
+        transform:scale(1);
+        opacity:1;
     }
+}
 
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
+.close{
+    position:absolute;
+    top:20px;
+    right:25px;
+    font-size:32px;
+    cursor:pointer;
+    z-index:99;
+}
 
-    /* NAVBAR */
+.modal img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+}
 
-    nav{
-      width:100%;
-      padding:20px 8%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:fixed;
-      top:0;
-      left:0;
-      background:rgba(255,255,255,0.95);
-      backdrop-filter:blur(10px);
-      z-index:1000;
-      border-bottom:1px solid #eee;
-    }
+.modal-body{
+    padding:40px;
+}
 
-    .logo{
-      font-size:30px;
-      font-weight:700;
-      color:#000;
-    }
+.modal-body h2{
+    margin-bottom:18px;
+    font-size:38px;
+}
 
-    .logo span{
-      color:#999;
-    }
+.modal-body p{
+    color:#666;
+    line-height:1.8;
+    margin-bottom:20px;
+}
 
-    .nav-links{
-      display:flex;
-      gap:35px;
-    }
+.inspect-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-top:30px;
+}
 
-    .nav-links a{
-      font-size:15px;
-      font-weight:500;
-      transition:0.3s;
-    }
+.inspect-box{
+    background:#f5f5f5;
+    padding:18px;
+    border-radius:14px;
+}
 
-    .nav-links a:hover{
-      color:#777;
-    }
+.inspect-box h4{
+    margin-bottom:8px;
+}
 
-    .contact-btn{
-      background:#000;
-      color:#fff;
-      padding:12px 22px;
-      border-radius:50px;
-      transition:0.3s;
-    }
+.score{
+    font-size:22px;
+    font-weight:800;
+    margin-top:25px;
+}
 
-    .contact-btn:hover{
-      background:#333;
-    }
+/* RESPONSIVE */
 
-    /* HERO */
+@media(max-width:1100px){
 
-    .hero{
-      width:100%;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:120px 8% 80px;
-      gap:50px;
-    }
+.inventory-grid{
+    grid-template-columns:repeat(2,1fr);
+}
 
-    .hero-text{
-      flex:1;
-    }
+.hero-grid,
+.about-grid,
+.info-grid,
+.footer-grid{
+    grid-template-columns:1fr;
+}
 
-    .hero-text h1{
-      font-size:68px;
-      line-height:1.1;
-      margin-bottom:20px;
-    }
+.hero-content h1{
+    font-size:52px;
+}
 
-    .hero-text p{
-      font-size:17px;
-      color:#666;
-      margin-bottom:35px;
-      line-height:1.8;
-      max-width:600px;
-    }
+}
 
-    .hero-buttons{
-      display:flex;
-      gap:20px;
-      flex-wrap:wrap;
-    }
+@media(max-width:768px){
 
-    .primary-btn{
-      background:#000;
-      color:#fff;
-      padding:15px 32px;
-      border-radius:50px;
-      font-weight:500;
-    }
+.nav-links{
+    position:absolute;
+    top:90px;
+    left:0;
+    width:100%;
+    background:#fff;
+    flex-direction:column;
+    padding:30px;
+    display:none;
+    border-bottom:1px solid #e5e5e5;
+}
 
-    .secondary-btn{
-      border:1px solid #ddd;
-      padding:15px 32px;
-      border-radius:50px;
-      font-weight:500;
-    }
+.nav-links.active{
+    display:flex;
+}
 
-    .hero-image{
-      flex:1;
-    }
+.menu-btn{
+    display:block;
+}
 
-    .hero-image img{
-      width:100%;
-      border-radius:25px;
-      object-fit:cover;
-      box-shadow:0 20px 60px rgba(0,0,0,0.08);
-    }
+.inventory-grid{
+    grid-template-columns:1fr;
+}
 
-    /* SECTION */
+.hero-content h1{
+    font-size:42px;
+}
 
-    section{
-      padding:90px 8%;
-    }
+.section-title h2,
+.about-content h2,
+.contact-box h2{
+    font-size:34px;
+}
 
-    .section-title{
-      text-align:center;
-      margin-bottom:60px;
-    }
+.contact-box{
+    padding:40px 25px;
+}
 
-    .section-title h2{
-      font-size:42px;
-      margin-bottom:10px;
-    }
+.inspect-grid{
+    grid-template-columns:1fr;
+}
 
-    .section-title p{
-      color:#777;
-    }
+}
 
-    /* CARDS */
-
-    .cars-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:30px;
-    }
-
-    .car-card{
-      background:#fff;
-      border:1px solid #eee;
-      border-radius:25px;
-      overflow:hidden;
-      transition:0.3s;
-    }
-
-    .car-card:hover{
-      transform:translateY(-8px);
-      box-shadow:0 20px 50px rgba(0,0,0,0.08);
-    }
-
-    .car-card img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-    }
-
-    .car-content{
-      padding:25px;
-    }
-
-    .car-content h3{
-      margin-bottom:10px;
-      font-size:24px;
-    }
-
-    .price{
-      font-size:24px;
-      font-weight:700;
-      margin:15px 0;
-    }
-
-    .car-details{
-      display:flex;
-      justify-content:space-between;
-      color:#777;
-      font-size:14px;
-      margin-bottom:20px;
-    }
-
-    .view-btn{
-      width:100%;
-      padding:13px;
-      border:none;
-      background:#000;
-      color:#fff;
-      border-radius:12px;
-      cursor:pointer;
-      font-size:15px;
-    }
-
-    /* ABOUT */
-
-    .about{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:50px;
-      align-items:center;
-    }
-
-    .about img{
-      width:100%;
-      border-radius:25px;
-    }
-
-    .about-text h2{
-      font-size:42px;
-      margin-bottom:20px;
-    }
-
-    .about-text p{
-      color:#666;
-      line-height:1.9;
-      margin-bottom:20px;
-    }
-
-    /* CONTACT */
-
-    .contact-box{
-      background:#fafafa;
-      border-radius:30px;
-      padding:60px;
-      text-align:center;
-      border:1px solid #eee;
-    }
-
-    .contact-box h2{
-      font-size:42px;
-      margin-bottom:20px;
-    }
-
-    .contact-box p{
-      color:#666;
-      margin-bottom:30px;
-    }
-
-    .contact-number{
-      font-size:34px;
-      font-weight:700;
-    }
-
-    /* FOOTER */
-
-    footer{
-      padding:30px 8%;
-      border-top:1px solid #eee;
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:20px;
-    }
-
-    footer p{
-      color:#777;
-    }
-
-    /* RESPONSIVE */
-
-    @media(max-width:900px){
-
-      .hero{
-        flex-direction:column;
-      }
-
-      .hero-text h1{
-        font-size:48px;
-      }
-
-      .about{
-        grid-template-columns:1fr;
-      }
-
-      .nav-links{
-        display:none;
-      }
-
-      .contact-box{
-        padding:40px 20px;
-      }
-    }
-
-  </style>
+</style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
+<header>
+<div class="container navbar">
 
-  <nav>
-    <div class="logo">VP <span>Pre Owned Cars</span></div>
+<div class="logo">
+VP <span>Pre Owned Cars</span>
+</div>
 
-    <div class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Buy Cars</a>
-      <a href="#">Sell Car</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </div>
+<div class="nav-links" id="navLinks">
+<a href="#">Home</a>
+<a href="#inventory">Buy Car</a>
+<a href="#sell">Sell Car</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</div>
 
-    <a href="#" class="contact-btn">Call Now</a>
-  </nav>
+<div class="menu-btn" id="menuBtn">
+☰
+</div>
 
-  <!-- HERO -->
+</div>
+</header>
 
-  <section class="hero">
+<!-- HERO -->
 
-    <div class="hero-text">
-      <h1>Drive Your Dream Car Today</h1>
+<section class="hero">
+<div class="container hero-grid">
 
-      <p>
-        Premium quality used cars with verified history, best pricing,
-        and trusted dealership support. VP Pre Owned Cars brings you
-        luxury, comfort, and reliability in one place.
-      </p>
+<div class="hero-content">
+<h4>PREMIUM PRE OWNED CAR CONSULTANTS</h4>
 
-      <div class="hero-buttons">
-        <a href="#" class="primary-btn">Explore Cars</a>
-        <a href="#" class="secondary-btn">Sell Your Car</a>
-      </div>
-    </div>
+<h1>Luxury Cars <br> Professionally Inspected</h1>
 
-    <div class="hero-image">
-      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop" alt="Luxury Car">
-    </div>
+<p>
+Explore certified premium pre owned cars with complete transparency,
+300 point inspection certification, warranty support, insurance assistance,
+RTO transfer guidance and luxury ownership experience.
+</p>
 
-  </section>
+<div class="hero-btns">
+<button class="btn btn-dark">Explore Inventory</button>
+<button class="btn btn-light">Sell Your Car</button>
+</div>
+</div>
 
-  <!-- FEATURED CARS -->
+<div class="hero-image">
+<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop" alt="">
+</div>
 
-  <section>
+</div>
+</section>
 
-    <div class="section-title">
-      <h2>Featured Cars</h2>
-      <p>Premium handpicked vehicles available right now</p>
-    </div>
+<!-- INVENTORY -->
 
-    <div class="cars-grid">
+<section id="inventory">
+<div class="container">
 
-      <div class="car-card">
-        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1200&auto=format&fit=crop" alt="">
+<div class="section-title">
+<h2>Featured Inventory</h2>
+<p>
+Every luxury vehicle is professionally inspected and verified before delivery.
+Premium brands only. No compromise on quality.
+</p>
+</div>
 
-        <div class="car-content">
-          <h3>BMW 5 Series</h3>
+<div class="inventory-grid">
 
-          <div class="car-details">
-            <span>Automatic</span>
-            <span>Petrol</span>
-            <span>2022</span>
-          </div>
+<!-- CAR 1 -->
 
-          <div class="price">₹32.5 Lakh</div>
+<div class="car-card" onclick="openModal(
+'Mercedes-Benz E-Class',
+'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1600&auto=format&fit=crop',
+'2022 Mercedes-Benz E350 AMG Line with premium interior, panoramic sunroof, ambient lighting and company service record.',
+'96/100'
+)">
 
-          <button class="view-btn">View Details</button>
-        </div>
-      </div>
+<img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1600&auto=format&fit=crop">
 
-      <div class="car-card">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop" alt="">
+<div class="car-content">
+<h3>Mercedes E-Class</h3>
 
-        <div class="car-content">
-          <h3>Audi A6</h3>
+<div class="car-meta">
+<span>2022</span>
+<span>22,000 KM</span>
+</div>
 
-          <div class="car-details">
-            <span>Automatic</span>
-            <span>Diesel</span>
-            <span>2021</span>
-          </div>
+<p>Luxury sedan with full service history and immaculate condition.</p>
 
-          <div class="price">₹29.9 Lakh</div>
+<div class="price">₹48 Lakh</div>
 
-          <button class="view-btn">View Details</button>
-        </div>
-      </div>
+<button class="card-btn">View Details</button>
 
-      <div class="car-card">
-        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=1200&auto=format&fit=crop" alt="">
+</div>
+</div>
 
-        <div class="car-content">
-          <h3>Mercedes C-Class</h3>
+<!-- CAR 2 -->
 
-          <div class="car-details">
-            <span>Automatic</span>
-            <span>Petrol</span>
-            <span>2023</span>
-          </div>
+<div class="car-card" onclick="openModal(
+'BMW 5 Series',
+'https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=1600&auto=format&fit=crop',
+'BMW 530i M Sport with adaptive suspension, connected drive and luxury interior package.',
+'94/100'
+)">
 
-          <div class="price">₹38.7 Lakh</div>
+<img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80&w=1600&auto=format&fit=crop">
 
-          <button class="view-btn">View Details</button>
-        </div>
-      </div>
+<div class="car-content">
+<h3>BMW 5 Series</h3>
 
-    </div>
+<div class="car-meta">
+<span>2021</span>
+<span>31,000 KM</span>
+</div>
 
-  </section>
+<p>Executive performance sedan with sporty yet elegant driving feel.</p>
 
-  <!-- ABOUT -->
+<div class="price">₹44 Lakh</div>
 
-  <section class="about">
+<button class="card-btn">View Details</button>
 
-    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1400&auto=format&fit=crop" alt="">
+</div>
+</div>
 
-    <div class="about-text">
-      <h2>Trusted Used Car Dealership</h2>
+<!-- CAR 3 -->
 
-      <p>
-        At VP Pre Owned Cars, every vehicle goes through detailed inspection,
-        verification, and quality checks before reaching you.
-      </p>
+<div class="car-card" onclick="openModal(
+'Audi A6',
+'https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?q=80&w=1600&auto=format&fit=crop',
+'Premium Audi A6 with virtual cockpit, quattro technology and luxury cabin.',
+'95/100'
+)">
 
-      <p>
-        We focus on providing clean, reliable, and premium cars with smooth
-        documentation and hassle-free ownership experience.
-      </p>
+<img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?q=80&w=1600&auto=format&fit=crop">
 
-      <a href="#" class="primary-btn">Know More</a>
-    </div>
+<div class="car-content">
+<h3>Audi A6</h3>
 
-  </section>
+<div class="car-meta">
+<span>2022</span>
+<span>18,000 KM</span>
+</div>
 
-  <!-- CONTACT -->
+<p>German engineering paired with modern luxury and smooth performance.</p>
 
-  <section>
+<div class="price">₹46 Lakh</div>
 
-    <div class="contact-box">
-      <h2>Looking For Your Next Car?</h2>
+<button class="card-btn">View Details</button>
 
-      <p>
-        Connect with VP Pre Owned Cars and get the best deals on premium
-        used vehicles today.
-      </p>
+</div>
+</div>
 
-      <div class="contact-number">7744887688</div>
-    </div>
+<!-- CAR 4 -->
 
-  </section>
+<div class="car-card" onclick="openModal(
+'Skoda Superb',
+'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1600&auto=format&fit=crop',
+'Top-end Skoda Superb with ventilated seats, digital cockpit and premium comfort.',
+'92/100'
+)">
 
-  <!-- FOOTER -->
+<img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=1600&auto=format&fit=crop">
 
-  <footer>
-    <p>© 2026 VP Pre Owned Cars. All Rights Reserved.</p>
+<div class="car-content">
+<h3>Skoda Superb</h3>
 
-    <p>Premium Used Car Dealership</p>
-  </footer>
+<div class="car-meta">
+<span>2021</span>
+<span>26,000 KM</span>
+</div>
+
+<p>Elegant executive sedan with outstanding rear comfort and features.</p>
+
+<div class="price">₹28 Lakh</div>
+
+<button class="card-btn">View Details</button>
+
+</div>
+</div>
+
+<!-- CAR 5 -->
+
+<div class="car-card" onclick="openModal(
+'Volkswagen Tiguan',
+'https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1600&auto=format&fit=crop',
+'Volkswagen Tiguan with advanced safety systems and premium European styling.',
+'91/100'
+)">
+
+<img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1600&auto=format&fit=crop">
+
+<div class="car-content">
+<h3>Volkswagen Tiguan</h3>
+
+<div class="car-meta">
+<span>2022</span>
+<span>14,000 KM</span>
+</div>
+
+<p>Luxury SUV with refined driving dynamics and premium comfort.</p>
+
+<div class="price">₹34 Lakh</div>
+
+<button class="card-btn">View Details</button>
+
+</div>
+</div>
+
+<!-- CAR 6 -->
+
+<div class="car-card" onclick="openModal(
+'Audi Q5',
+'https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=1600&auto=format&fit=crop',
+'Well maintained Audi Q5 with quattro AWD and advanced infotainment system.',
+'97/100'
+)">
+
+<img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=1600&auto=format&fit=crop">
+
+<div class="car-content">
+<h3>Audi Q5</h3>
+
+<div class="car-meta">
+<span>2023</span>
+<span>11,000 KM</span>
+</div>
+
+<p>Premium SUV with strong road presence and refined luxury interior.</p>
+
+<div class="price">₹55 Lakh</div>
+
+<button class="card-btn">View Details</button>
+
+</div>
+</div>
+
+<!-- CAR 7 -->
+
+<div class="car-card" onclick="openModal(
+'BMW X3',
+'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&auto=format&fit=crop',
+'BMW X3 with luxury leather interior and smooth turbocharged performance.',
+'93/100'
+)">
+
+<img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1600&auto=format&fit=crop">
+
+<div class="car-content">
+<h3>BMW X3</h3>
+
+<div class="car-meta">
+<span>2022</span>
+<span>19,000 KM</span>
+</div>
+
+<p>Dynamic luxury SUV designed for comfort and spirited performance.</p>
+
+<div class="price">₹58 Lakh</div>
+
+<button class="card-btn">View Details</button>
+
+</div>
+</div>
+
+<!-- CAR 8 -->
+
+<div class="car-card" onclick="openModal(
+'Mercedes GLC',
+'https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?q=80&w=1600&auto=format&fit=crop',
+'Mercedes GLC with panoramic sunroof, ambient package and luxury finish.',
+'95/100'
+)">
+
+<img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?q=80&w=1600&auto=format&fit=crop">
+
+<div class="car-content">
+<h3>Mercedes GLC</h3>
+
+<div class="car-meta">
+<span>2023</span>
+<span>8,000 KM</span>
+</div>
+
+<p>Luxury SUV maintained in exceptional showroom condition.</p>
+
+<div class="price">₹62 Lakh</div>
+
+<button class="card-btn">View Details</button>
+
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- INFO -->
+
+<section class="info-section">
+<div class="container">
+
+<div class="section-title">
+<h2>Why Choose VP Pre Owned Cars</h2>
+<p>
+Professional consultancy and complete ownership support for premium vehicles.
+</p>
+</div>
+
+<div class="info-grid">
+
+<div class="info-box">
+<h3>300 Point Inspection</h3>
+<p>
+Every vehicle undergoes a detailed 300 point inspection process covering engine,
+electronics, suspension, braking system, paint quality, interior condition,
+accident history and overall performance before certification.
+</p>
+</div>
+
+<div class="info-box">
+<h3>1 Year Warranty</h3>
+<p>
+Drive confidently with our warranty support on selected luxury cars.
+Our team ensures peace of mind ownership experience with verified vehicles
+and professional after sales assistance.
+</p>
+</div>
+
+<div class="info-box">
+<h3>Complete Documentation</h3>
+<p>
+Insurance assistance, RTO transfer support, finance guidance,
+ownership transfer and all necessary documentation are professionally managed
+by our experienced team.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+<div class="container about-grid">
+
+<div class="about-image">
+<img src="https://images.unsplash.com/photo-1493238792000-8113da705763?q=80&w=1600&auto=format&fit=crop">
+</div>
+
+<div class="about-content">
+<h2>Premium Car Buying Experience</h2>
+
+<p>
+VP Pre Owned Cars focuses on premium and luxury pre owned vehicles
+for customers who value transparency, quality and peace of mind.
+</p>
+
+<p>
+From sourcing genuine luxury cars to inspection certification and paperwork,
+our consultancy ensures a smooth and reliable buying experience.
+</p>
+
+<p>
+We specialize in premium brands including Mercedes-Benz, BMW,
+Audi, Skoda and Volkswagen luxury lineup.
+</p>
+
+<button class="btn btn-dark">
+Contact Consultant
+</button>
+
+</div>
+
+</div>
+</section>
+
+<!-- SELL -->
+
+<section id="sell">
+<div class="container">
+
+<div class="section-title">
+<h2>Sell Your Luxury Car</h2>
+
+<p>
+Get the right valuation for your premium car with a transparent process,
+professional inspection and verified buyers network.
+</p>
+</div>
+
+<div class="contact-box">
+<h2>Quick Car Evaluation</h2>
+
+<p>Professional Inspection & Premium Market Valuation</p>
+<p>Luxury Cars Only</p>
+<p>Fast Documentation Assistance</p>
+
+<br>
+
+<button class="btn btn-dark">
+Call Now : 7744887688
+</button>
+
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+<div class="container">
+
+<div class="contact-box">
+
+<h2>Contact Us</h2>
+
+<p><strong>Phone:</strong> 7744887688</p>
+<p><strong>Location:</strong> Pune, India</p>
+<p><strong>Email:</strong> contact@vppreownedcars.com</p>
+
+<br>
+
+<button class="btn btn-dark">
+Book Appointment
+</button>
+
+</div>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+<div class="footer-logo">
+VP Pre Owned Cars
+</div>
+
+<div class="footer-about">
+Premium pre owned luxury car consultants focused on certified inventory,
+inspection transparency and complete ownership assistance.
+</div>
+</div>
+
+<div class="footer-links">
+<h4>Navigation</h4>
+<a href="#">Home</a>
+<a href="#inventory">Buy Car</a>
+<a href="#sell">Sell Car</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</div>
+
+<div class="footer-links">
+<h4>Services</h4>
+<a href="#">Luxury Car Sales</a>
+<a href="#">Car Inspection</a>
+<a href="#">Warranty Support</a>
+<a href="#">Insurance Assistance</a>
+<a href="#">RTO Transfer</a>
+</div>
+
+<div class="footer-links">
+<h4>Contact</h4>
+<a href="#">7744887688</a>
+<a href="#">Pune, India</a>
+<a href="#">Premium Consultancy</a>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 VP Pre Owned Cars. All Rights Reserved.
+</div>
+
+</div>
+
+</footer>
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeModal()">&times;</span>
+
+<img id="modalImage" src="">
+
+<div class="modal-body">
+
+<h2 id="modalTitle"></h2>
+
+<p id="modalDesc"></p>
+
+<div class="score">
+Inspection Score : <span id="modalScore"></span>
+</div>
+
+<div class="inspect-grid">
+
+<div class="inspect-box">
+<h4>Engine Health</h4>
+<p>Excellent condition with smooth performance.</p>
+</div>
+
+<div class="inspect-box">
+<h4>Paint Quality</h4>
+<p>Professionally inspected with premium finish.</p>
+</div>
+
+<div class="inspect-box">
+<h4>Suspension</h4>
+<p>Comfort and stability tested thoroughly.</p>
+</div>
+
+<div class="inspect-box">
+<h4>Electrical Systems</h4>
+<p>Fully tested infotainment and electronics.</p>
+</div>
+
+<div class="inspect-box">
+<h4>Interior Condition</h4>
+<p>Luxury interior maintained in excellent condition.</p>
+</div>
+
+<div class="inspect-box">
+<h4>Accident History</h4>
+<p>Verified records and inspection certified.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* MOBILE MENU */
+
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+
+menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+/* MODAL */
+
+const modal = document.getElementById('modal');
+
+function openModal(title, image, desc, score){
+
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalImage').src = image;
+    document.getElementById('modalDesc').innerText = desc;
+    document.getElementById('modalScore').innerText = score;
+
+    modal.style.display = 'flex';
+}
+
+function closeModal(){
+    modal.style.display = 'none';
+}
+
+window.onclick = function(e){
+    if(e.target == modal){
+        modal.style.display = 'none';
+    }
+}
+
+</script>
 
 </body>
 </html>
