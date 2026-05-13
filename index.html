@@ -4,296 +4,479 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VP Pre Owned Cars</title>
-  <link rel="stylesheet" href="styles.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#ffffff;
+      color:#111;
+      overflow-x:hidden;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      left:0;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(10px);
+      z-index:1000;
+      border-bottom:1px solid #eee;
+    }
+
+    .logo{
+      font-size:30px;
+      font-weight:700;
+      color:#000;
+    }
+
+    .logo span{
+      color:#999;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:35px;
+    }
+
+    .nav-links a{
+      font-size:15px;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#777;
+    }
+
+    .contact-btn{
+      background:#000;
+      color:#fff;
+      padding:12px 22px;
+      border-radius:50px;
+      transition:0.3s;
+    }
+
+    .contact-btn:hover{
+      background:#333;
+    }
+
+    /* HERO */
+
+    .hero{
+      width:100%;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:120px 8% 80px;
+      gap:50px;
+    }
+
+    .hero-text{
+      flex:1;
+    }
+
+    .hero-text h1{
+      font-size:68px;
+      line-height:1.1;
+      margin-bottom:20px;
+    }
+
+    .hero-text p{
+      font-size:17px;
+      color:#666;
+      margin-bottom:35px;
+      line-height:1.8;
+      max-width:600px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .primary-btn{
+      background:#000;
+      color:#fff;
+      padding:15px 32px;
+      border-radius:50px;
+      font-weight:500;
+    }
+
+    .secondary-btn{
+      border:1px solid #ddd;
+      padding:15px 32px;
+      border-radius:50px;
+      font-weight:500;
+    }
+
+    .hero-image{
+      flex:1;
+    }
+
+    .hero-image img{
+      width:100%;
+      border-radius:25px;
+      object-fit:cover;
+      box-shadow:0 20px 60px rgba(0,0,0,0.08);
+    }
+
+    /* SECTION */
+
+    section{
+      padding:90px 8%;
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .section-title h2{
+      font-size:42px;
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:#777;
+    }
+
+    /* CARDS */
+
+    .cars-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .car-card{
+      background:#fff;
+      border:1px solid #eee;
+      border-radius:25px;
+      overflow:hidden;
+      transition:0.3s;
+    }
+
+    .car-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 20px 50px rgba(0,0,0,0.08);
+    }
+
+    .car-card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .car-content{
+      padding:25px;
+    }
+
+    .car-content h3{
+      margin-bottom:10px;
+      font-size:24px;
+    }
+
+    .price{
+      font-size:24px;
+      font-weight:700;
+      margin:15px 0;
+    }
+
+    .car-details{
+      display:flex;
+      justify-content:space-between;
+      color:#777;
+      font-size:14px;
+      margin-bottom:20px;
+    }
+
+    .view-btn{
+      width:100%;
+      padding:13px;
+      border:none;
+      background:#000;
+      color:#fff;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:15px;
+    }
+
+    /* ABOUT */
+
+    .about{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .about img{
+      width:100%;
+      border-radius:25px;
+    }
+
+    .about-text h2{
+      font-size:42px;
+      margin-bottom:20px;
+    }
+
+    .about-text p{
+      color:#666;
+      line-height:1.9;
+      margin-bottom:20px;
+    }
+
+    /* CONTACT */
+
+    .contact-box{
+      background:#fafafa;
+      border-radius:30px;
+      padding:60px;
+      text-align:center;
+      border:1px solid #eee;
+    }
+
+    .contact-box h2{
+      font-size:42px;
+      margin-bottom:20px;
+    }
+
+    .contact-box p{
+      color:#666;
+      margin-bottom:30px;
+    }
+
+    .contact-number{
+      font-size:34px;
+      font-weight:700;
+    }
+
+    /* FOOTER */
+
+    footer{
+      padding:30px 8%;
+      border-top:1px solid #eee;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:20px;
+    }
+
+    footer p{
+      color:#777;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:900px){
+
+      .hero{
+        flex-direction:column;
+      }
+
+      .hero-text h1{
+        font-size:48px;
+      }
+
+      .about{
+        grid-template-columns:1fr;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .contact-box{
+        padding:40px 20px;
+      }
+    }
+
+  </style>
 </head>
+
 <body>
 
-<header class="navbar">
-  <div class="logo">VP Pre Owned Cars</div>
+  <!-- NAVBAR -->
 
   <nav>
-    <a href="#">Buy Cars</a>
-    <a href="#">Sell Your Car</a>
-    <a href="#">Inspection</a>
-    <a href="#">Contact</a>
+    <div class="logo">VP <span>Pre Owned Cars</span></div>
+
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Buy Cars</a>
+      <a href="#">Sell Car</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <a href="#" class="contact-btn">Call Now</a>
   </nav>
 
-  <a href="tel:7744887688" class="call-btn">Call Now</a>
-</header>
+  <!-- HERO -->
 
-<section class="hero">
+  <section class="hero">
 
-  <div class="overlay"></div>
+    <div class="hero-text">
+      <h1>Drive Your Dream Car Today</h1>
 
-  <div class="hero-content">
-
-    <h1>Drive with Absolute Confidence.</h1>
-
-    <p>
-      Every car is backed by a 300-point inspection,
-      a 1-year warranty, and free monthly cleaning.
-    </p>
-
-    <div class="search-box">
-
-      <select>
-        <option>Select Make</option>
-        <option>BMW</option>
-        <option>Audi</option>
-        <option>Mercedes</option>
-      </select>
-
-      <select>
-        <option>Select Model</option>
-      </select>
-
-      <select>
-        <option>Select Budget</option>
-        <option>₹5L - ₹10L</option>
-        <option>₹10L - ₹20L</option>
-      </select>
-
-      <button>Search Cars</button>
-
-    </div>
-
-  </div>
-
-</section>
-
-<section class="trust-section">
-
-  <h2>The Triple Guarantee</h2>
-
-  <div class="trust-grid">
-
-    <div class="card">
-      <div class="icon">✓</div>
-      <h3>300-Point Certified</h3>
       <p>
-        We inspect everything from the engine mounts
-        to the seat stitching.
+        Premium quality used cars with verified history, best pricing,
+        and trusted dealership support. VP Pre Owned Cars brings you
+        luxury, comfort, and reliability in one place.
       </p>
+
+      <div class="hero-buttons">
+        <a href="#" class="primary-btn">Explore Cars</a>
+        <a href="#" class="secondary-btn">Sell Your Car</a>
+      </div>
     </div>
 
-    <div class="card">
-      <div class="icon">🛡</div>
-      <h3>1-Year Warranty</h3>
-      <p>
-        Comprehensive coverage. If it breaks,
-        we fix it at zero cost.
-      </p>
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop" alt="Luxury Car">
     </div>
 
-    <div class="card">
-      <div class="icon">🚗</div>
-      <h3>12 Months Free Cleaning</h3>
-      <p>
-        Professional deep-clean every 30 days
-        to keep that showroom feel.
-      </p>
+  </section>
+
+  <!-- FEATURED CARS -->
+
+  <section>
+
+    <div class="section-title">
+      <h2>Featured Cars</h2>
+      <p>Premium handpicked vehicles available right now</p>
     </div>
 
-  </div>
+    <div class="cars-grid">
 
-</section>
+      <div class="car-card">
+        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1200&auto=format&fit=crop" alt="">
 
-<section class="featured-cars">
+        <div class="car-content">
+          <h3>BMW 5 Series</h3>
 
-  <h2>Featured Certified Cars</h2>
+          <div class="car-details">
+            <span>Automatic</span>
+            <span>Petrol</span>
+            <span>2022</span>
+          </div>
 
-  <div class="car-grid">
+          <div class="price">₹32.5 Lakh</div>
 
-    <div class="car-card">
+          <button class="view-btn">View Details</button>
+        </div>
+      </div>
 
-      <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=1200">
+      <div class="car-card">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop" alt="">
 
-      <div class="car-content">
+        <div class="car-content">
+          <h3>Audi A6</h3>
 
-        <span class="vscore">V-Score 98/100</span>
+          <div class="car-details">
+            <span>Automatic</span>
+            <span>Diesel</span>
+            <span>2021</span>
+          </div>
 
-        <h3>BMW 5 Series</h3>
+          <div class="price">₹29.9 Lakh</div>
 
-        <p>2022 • Petrol • 18,000 KM</p>
+          <button class="view-btn">View Details</button>
+        </div>
+      </div>
 
-        <h4>₹32,50,000</h4>
+      <div class="car-card">
+        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=1200&auto=format&fit=crop" alt="">
 
-        <button>View Details</button>
+        <div class="car-content">
+          <h3>Mercedes C-Class</h3>
 
+          <div class="car-details">
+            <span>Automatic</span>
+            <span>Petrol</span>
+            <span>2023</span>
+          </div>
+
+          <div class="price">₹38.7 Lakh</div>
+
+          <button class="view-btn">View Details</button>
+        </div>
       </div>
 
     </div>
 
-    <div class="car-card">
+  </section>
 
-      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200">
+  <!-- ABOUT -->
 
-      <div class="car-content">
+  <section class="about">
 
-        <span class="vscore">V-Score 96/100</span>
+    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?q=80&w=1400&auto=format&fit=crop" alt="">
 
-        <h3>Audi A6</h3>
+    <div class="about-text">
+      <h2>Trusted Used Car Dealership</h2>
 
-        <p>2021 • Diesel • 24,000 KM</p>
+      <p>
+        At VP Pre Owned Cars, every vehicle goes through detailed inspection,
+        verification, and quality checks before reaching you.
+      </p>
 
-        <h4>₹28,90,000</h4>
+      <p>
+        We focus on providing clean, reliable, and premium cars with smooth
+        documentation and hassle-free ownership experience.
+      </p>
 
-        <button>View Details</button>
-
-      </div>
-
+      <a href="#" class="primary-btn">Know More</a>
     </div>
 
-    <div class="car-card">
+  </section>
 
-      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1200">
+  <!-- CONTACT -->
 
-      <div class="car-content">
+  <section>
 
-        <span class="vscore">V-Score 99/100</span>
+    <div class="contact-box">
+      <h2>Looking For Your Next Car?</h2>
 
-        <h3>Mercedes C-Class</h3>
+      <p>
+        Connect with VP Pre Owned Cars and get the best deals on premium
+        used vehicles today.
+      </p>
 
-        <p>2023 • Petrol • 8,000 KM</p>
-
-        <h4>₹39,99,000</h4>
-
-        <button>View Details</button>
-
-      </div>
-
+      <div class="contact-number">7744887688</div>
     </div>
 
-  </div>
+  </section>
 
-</section>
+  <!-- FOOTER -->
 
-<section class="inspection">
+  <footer>
+    <p>© 2026 VP Pre Owned Cars. All Rights Reserved.</p>
 
-  <h2>300-Point Inspection Process</h2>
-
-  <div class="inspection-grid">
-
-    <div class="inspection-card">
-
-      <h3>Engine & Drivetrain</h3>
-
-      <ul>
-        <li>Compression Tests</li>
-        <li>Fluid Analysis</li>
-        <li>Transmission Shifts</li>
-      </ul>
-
-    </div>
-
-    <div class="inspection-card">
-
-      <h3>Exterior & Structure</h3>
-
-      <ul>
-        <li>Paint Thickness Checks</li>
-        <li>Chassis Alignment</li>
-        <li>Accident Detection</li>
-      </ul>
-
-    </div>
-
-    <div class="inspection-card">
-
-      <h3>Electrical Systems</h3>
-
-      <ul>
-        <li>ECU Scanning</li>
-        <li>Battery Health</li>
-        <li>Sensor Calibration</li>
-      </ul>
-
-    </div>
-
-    <div class="inspection-card">
-
-      <h3>Interior & Convenience</h3>
-
-      <ul>
-        <li>AC Performance</li>
-        <li>Infotainment Testing</li>
-        <li>Upholstery Condition</li>
-      </ul>
-
-    </div>
-
-  </div>
-
-</section>
-
-<section class="sell-car">
-
-  <div class="sell-content">
-
-    <h2>Sell Your Car at the Right Value</h2>
-
-    <p>
-      Instant evaluation, same-day payment,
-      and transparent process.
-    </p>
-
-    <form>
-
-      <input type="text" placeholder="Your Name">
-
-      <input type="tel" placeholder="Phone Number">
-
-      <input type="text" placeholder="Car Brand">
-
-      <input type="text" placeholder="Model">
-
-      <button type="submit">Get Free Valuation</button>
-
-    </form>
-
-  </div>
-
-</section>
-
-<footer>
-
-  <div class="footer-grid">
-
-    <div>
-      <h4>VP Pre Owned Cars</h4>
-      <p>Drive with Absolute Confidence.</p>
-      <p>📞 7744887688</p>
-    </div>
-
-    <div>
-      <h4>Cars by Budget</h4>
-      <a href="#">Under ₹5 Lakhs</a>
-      <a href="#">Under ₹10 Lakhs</a>
-      <a href="#">Luxury Cars</a>
-    </div>
-
-    <div>
-      <h4>Body Type</h4>
-      <a href="#">SUV</a>
-      <a href="#">Sedan</a>
-      <a href="#">Hatchback</a>
-    </div>
-
-    <div>
-      <h4>Top Cities</h4>
-      <a href="#">Pune</a>
-      <a href="#">Mumbai</a>
-      <a href="#">Thane</a>
-    </div>
-
-  </div>
-
-  <div class="copyright">
-    © 2026 VP Pre Owned Cars. All Rights Reserved.
-  </div>
-
-</footer>
+    <p>Premium Used Car Dealership</p>
+  </footer>
 
 </body>
 </html>
